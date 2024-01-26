@@ -2,6 +2,13 @@
     Authors: straykevin
 ]]--
 
+
+--[=[
+    @class Main
+
+    The loader for the gamejam.
+
+]=]
 local Main = {}
 
 
