@@ -32,7 +32,7 @@ function PressurePlate.new(instance: Model)
 
     local startCFrame: CFrame = nil
 
-    local timeBeforeDeactivate = 1 -- how long before an object should be deactivated
+    local timeBeforeDeactivate = tonumber(instance:GetAttribute("DeactivationTime")) or 1 -- how long before an object should be deactivated
     local currTime = 0 -- current time
 
     RunService.Heartbeat:Connect(function(dt)
@@ -47,7 +47,7 @@ function PressurePlate.new(instance: Model)
         --[[ 
             
             The query works as the following. We use the query to decide whether or not an object is colliding...
-            Whenever 
+            When no object is detected touching a pressure plate, then we begin a countdown to deactivation...
 
         ]]--
 
