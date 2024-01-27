@@ -9,3 +9,4 @@ private = true
 Promise = "evaera/promise@4.0.0"
 Cmdr = "evaera/cmdr@1.8.5"
 Janitor = "howmanysmall/janitor@1.15.7"
+Binder = "hahafunnyman/binder@0.2.0"
