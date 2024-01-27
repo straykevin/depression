@@ -1,7 +1,7 @@
 return {
 
     Init = function(self)
-
+        self.state = {}
     end,
 
     Activate = function(self)
