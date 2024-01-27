@@ -61,7 +61,7 @@ function PressurePlate.new(instance: Model)
         self._DetectionCFrame = primPart.CFrame:ToWorldSpace(CFrame.new(offsetSize/2))
 
         -- offseting cframe height to account for increase in size... (we don't want to detect the lowerbounds, only the higherbounds)
-        local query = workspace:GetPartBoundsInBox(self._DetectionCFrame, self._DetectionSize, self._Functions.GetFilter(self) or require(script.Functions["Default"].GetFilter(self)))
+        local query = workspace:GetPartBoundsInBox(self._DetectionCFrame, self._DetectionSize, self._Functions.GetFilter and self._Functions.GetFilter(self) or require(script.Functions["Default"]).GetFilter(self))
         
         --[[ 
             
