@@ -57,6 +57,8 @@ function PressurePlate.new(instance: Model)
 
 
     RunService.Heartbeat:Connect(function(dt)
+        if self._Locked then return end
+        
         
         self._DetectionCFrame = primPart.CFrame:ToWorldSpace(CFrame.new(offsetSize/2))
 
@@ -99,6 +101,14 @@ function PressurePlate.new(instance: Model)
     end)
 
     return self
+end
+
+function PressurePlate:Lock()
+    self._Locked = true
+end
+
+function PressurePlate:Unlock()
+    self._Locked = false
 end
 
 function PressurePlate:_Toggle(bool)
