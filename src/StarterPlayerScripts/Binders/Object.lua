@@ -2,7 +2,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Folders
-local ObjectsFolder = ReplicatedStorage:WaitForChild("ObjectsFolder")
+
 
 -- Constants 
 local MAX_INTERACTION_DISTANCE = 10
@@ -10,19 +10,24 @@ local MAX_INTERACTION_DISTANCE = 10
 local object = {}
 object.__index = object
 
--- Creates a new object that can be manipulated
-function object.new(objectName : string, location : CFrame)
+
+
+-- Creates a new object that can be manipulated. 
+-- WARNING: Make sure models are set to the atomic streaming state.
+function object.new(instance: Model)
     local self = setmetatable({}, object)
+    print("Initiated Object: ", instance)
 
-    if objectName and location then
-        self.object = ObjectsFolder[objectName]:Clone()
-        self.object.CFrame = location
+    instance:SetAttribute("isInteractable", true)
+    self.object = instance
 
-        self.name = objectName
-        self.playerHolding = false
-        self.isHoldable = false --Some items are holdable, others are not
-        self.isInteractable = false --After it has been interacted with we can toggle it no longer interactable
-    end
+
+
+    self.name = instance.Name
+    self.playerHolding = false
+    self.isHoldable = false --Some items are holdable, others are not
+    self.isInteractable = false --After it has been interacted with we can toggle it no longer interactable
+
 
     --Pickup function
     function self:pickup(player : Player)

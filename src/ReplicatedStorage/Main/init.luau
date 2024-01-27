@@ -17,7 +17,9 @@ local Binder = require(ReplicatedStorage:WaitForChild("Packages").Binder)
     The loader for the gamejam.
 
 ]=]
-local Main = {}
+local Main = {
+    Binders = {}
+}
 
 
 --[=[
@@ -34,6 +36,8 @@ function Main.init(source)
 
         local newBinder = Binder.new(config, require(module))
         newBinder:Start()
+
+        Main.Binders[module.Name] = newBinder
     end
     
 
